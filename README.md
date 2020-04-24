@@ -1,15 +1,17 @@
+# Needed API configurations
+
 To run the code, you first need to set up all the API configurations,
 
 - which need to go into a config.py file
 
-# Twitter/Tweepy Secrets
+**Twitter/Tweepy Secrets**
 
 - consumer_key
 - consumer_secret
 - access_key
 - access_secret
 
-# AWS Secrets
+**AWS Secrets**
 
 - awsDBHost
 - awsDBPort
@@ -22,9 +24,11 @@ To run the code, you first need to set up all the API configurations,
 - ACCESS_KEY
 - SECRET_KEY
 
-# Google Secrets
+**Google Secrets**
 
 - googleClientKey
+
+#Running the code
 
 Then you can run the "index.py" code file by using the following commands in the command console (or terminal)
 
