@@ -75,7 +75,9 @@ def get_tweets(location, city, state):
     csvFile.close()
 
     # Printing the tweets
-    # print(tmp)
+
+    print("\n Printing the tweets \n")
+    print(tmp)
 
 
 def loadToMySQL():
@@ -88,6 +90,7 @@ def loadToMySQL():
         database=config.awsDBDatabase
     )
 
+    print("\n Connected to DB \n")
     print(conn)
 
     # Creating a cursor object using the cursor() method
@@ -154,6 +157,8 @@ def analyzeTweetForSentiment():
         primaryId = tweetObject[0]
         tweetText = tweetObject[1].encode('utf-8')
 
+        print(tweetText)
+
         jsonStringSentiment = json.dumps(comprehend.detect_sentiment(
             Text=tweetText, LanguageCode='en'), sort_keys=True, indent=4)
 
@@ -165,27 +170,28 @@ def analyzeTweetForSentiment():
         sentimentResults.append(
             (primaryId, sentimentTitle, sentimentExactScore))
 
-    # print(sentimentResults)
+        # print(sentimentResults)
 
-    if (dropAndRecreateTable == True):
-        # Dropping SentimentData table if already exists.
-        cursor.execute("DROP TABLE IF EXISTS SentimentData")
+    # Dropping SentimentData table if already exists.
+    cursor.execute("DROP TABLE IF EXISTS SentimentData")
 
-        # Creating table as per requirement
-        sqlCreateTable1 = '''CREATE TABLE SentimentData(
-                                ID int NOT NULL, 
-                                TAG_NAME TEXT(10) NOT NULL,
-                                CONFIDENCE FLOAT NOT NULL,
-                                PRIMARY KEY (ID)
-                            )'''
-        cursor.execute(sqlCreateTable1)
+    # Creating table as per requirement
+    sqlCreateTable1 = '''CREATE TABLE SentimentData(
+                            ID int NOT NULL,
+                            TAG_NAME TEXT(10) NOT NULL,
+                            CONFIDENCE FLOAT NOT NULL,
+                            PRIMARY KEY (ID)
+                        )'''
+    cursor.execute(sqlCreateTable1)
+
+    print("\n SENTIMENT DATA \n")
 
     for row in sentimentResults:
         cursor.execute('INSERT INTO SentimentData(ID, TAG_NAME, CONFIDENCE)'
                        'VALUES(%s, %s, %s)',
                        row)
 
-        # print(row)
+        print(row)
 
     conn.commit()
 
@@ -217,11 +223,11 @@ if __name__ == '__main__':
     location = lat + ',' + lng + ',' + '50mi'
     print("Location of Tweets: ", location)
 
-    # print("\n Fetching the Tweets!\n")
-    # get_tweets(location, city, state)
+    print("\n Fetching the Tweets!\n")
+    get_tweets(location, city, state)
 
-    # print("\nSending to Database!\n")
-    # loadToMySQL()
+    print("\nSending to Database!\n")
+    loadToMySQL()
 
-    # print("\Analyzing Sentiments of Tweets!\n")
-    # analyzeTweetForSentiment()
+    print("\Analyzing Sentiments of Tweets!\n")
+    analyzeTweetForSentiment()
