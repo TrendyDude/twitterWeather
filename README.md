@@ -28,7 +28,7 @@ To run the code, you first need to set up all the API configurations,
 
 - googleClientKey
 
-#Running the code
+# Running the code
 
 Then you can run the "index.py" code file by using the following commands in the command console (or terminal)
 
