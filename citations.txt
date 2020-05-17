@@ -1,0 +1,26 @@
+Tweepy API related research: 
+
+- http://docs.tweepy.org/en/latest/api.html
+
+- https://stackoverflow.com/questions/22469713/managing-tweepy-api-search
+
+- https://www.geeksforgeeks.org/extraction-of-tweets-using-tweepy/
+
+Store data into CSV:
+
+- https://stackoverflow.com/questions/21865413/get-data-from-twitter-using-tweepy-and-store-in-csv-file
+
+Google Map API:
+- https://github.com/googlemaps/google-maps-services-python
+
+Reading/Writing Json with Python:
+
+- https://www.geeksforgeeks.org/read-write-and-parse-json-using-python/
+
+Creating/Connecting to SQL Tables with Python:
+
+- https://www.tutorialspoint.com/python_data_access/python_mysql_create_table.htm
+
+Twitter Text Cleaning/Preprocessing:
+
+- https://towardsdatascience.com/extracting-twitter-data-pre-processing-and-sentiment-analysis-using-python-3-0-7192bd8b47cf

@@ -16,9 +16,18 @@
     <body>
         
         
-        <form  method="post">
+        <form action="/index.py" method="get">
             <label for="location">Enter a Location:</label>
             <input type="text" id="location" name="location_input">
+        </form>
+
+        <form action="" method=”POST”>
+            <label> Username </label>
+            <input type=”text” name=”username” value={{request.form.username}}>
+            <label> Password </label>
+            <input type=”password” name=”password” value={{request.form.password}}>
+         
+            <button type=”submit”> Submit </button>
         </form>
         
         <script src="" async defer></script>
